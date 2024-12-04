@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90834b44c1601f44816fcf68db37c12, type: 3}
+  m_Name: Tavuk
+  m_EditorClassIdentifier: 
+  ingredientName: Tavuk
+  ingredientPrefab: {fileID: 3999950524525629764, guid: e55d328931365724ea376af3e3219b09, type: 3}
+  requiresCutting: 1
+  requiresWashing: 0
+  requiresCooking: 1
+  requiresBaking: 0

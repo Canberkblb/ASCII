@@ -52,16 +52,10 @@ public class RecipeList
 
 public class TestScript : MonoBehaviour
 {
-    [SerializeField] private string apiKey = "31";
+    [SerializeField] private Ingredient[] ingredients;
     private readonly string baseUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
     
-    [SerializeField] private string[] ingredients = new string[]
-    {
-        "domates", "soğan", "patates", "havuç", "patlıcan",
-        "biber", "sarımsak", "kabak", "pirinç", "makarna",
-        "kıyma", "tavuk", "mantar", "bezelye", "mısır",
-        "fasulye", "mercimek", "bulgur", "nohut", "ıspanak"
-    };
+    [SerializeField] private string apiKey = "31";
 
     private async void Update()
     {
@@ -71,7 +65,7 @@ public class TestScript : MonoBehaviour
             int malzemeSayisi = 5;
             var secilenMalzemeler = ingredients.OrderBy(x => rnd.Next()).Take(malzemeSayisi).ToList();
             
-            string malzemeListesi = string.Join(", ", secilenMalzemeler);
+            string malzemeListesi = string.Join(", ", secilenMalzemeler.Select(i => i.ingredientName));
             
             string systemPrompt = "JSON formatında yanıt ver. Verilen malzemelerle yapılabilecek bir yemek tarifi oluştur.";
             string userPrompt = $@"Şu malzemelerden bir yemek tarifi oluştur: {malzemeListesi}. 
@@ -134,13 +128,6 @@ public class TestScript : MonoBehaviour
 
     private void ParseAndLogRecipes(string jsonResponse)
     {
-        Debug.Log($"API yanıtının türü: {jsonResponse?.GetType()}");
-        if (string.IsNullOrEmpty(jsonResponse))
-        {
-            Debug.LogError("API yanıtı boş veya null geldi.");
-            return;
-        }
-
         try
         {
             var jsonData = JsonUtility.FromJson<GeminiResponse>(jsonResponse);
@@ -154,10 +141,34 @@ public class TestScript : MonoBehaviour
             Debug.Log($"\n<color=white>Tarif Açıklaması: {recipe.description}</color>");
             Debug.Log("\n<color=cyan>Malzemeler ve İşlemler:</color>");
             
-            foreach (var ingredient in recipe.ingredients)
+            foreach (var recipeIngredient in recipe.ingredients)
             {
-                Debug.Log($"\n<color=green>• {ingredient.name}</color>");
-                Debug.Log($"  Gerekli İşlemler: {string.Join(", ", ingredient.required_actions)}");
+                Debug.Log($"\n<color=green>• {recipeIngredient.name}</color>");
+                Debug.Log($"  Gerekli İşlemler: {string.Join(", ", recipeIngredient.required_actions)}");
+                
+                Ingredient matchingIngredient = ingredients.FirstOrDefault(i => 
+                    i.ingredientName.ToLower() == recipeIngredient.name.ToLower());
+                
+                if (matchingIngredient != null && matchingIngredient.ingredientPrefab != null)
+                {
+                    Vector3 spawnPosition = new Vector3(
+                        UnityEngine.Random.Range(-5f, 5f),
+                        0,
+                        UnityEngine.Random.Range(-5f, 5f)
+                    );
+                    
+                    GameObject spawnedIngredient = Instantiate(
+                        matchingIngredient.ingredientPrefab,
+                        spawnPosition,
+                        Quaternion.identity
+                    );
+                    
+                    spawnedIngredient.name = recipeIngredient.name;
+                }
+                else
+                {
+                    Debug.LogWarning($"'{recipeIngredient.name}' için prefab bulunamadı!");
+                }
             }
             Debug.Log("----------------------------------------");
         }

@@ -268,28 +268,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360dd069a6cf17548ae63855646792b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiKey: 31
   ingredients:
-  - domates
-  - "so\u011Fan"
-  - patates
-  - "havu\xE7"
-  - "patl\u0131can"
-  - biber
-  - "sar\u0131msak"
-  - kabak
-  - "pirin\xE7"
-  - makarna
-  - "k\u0131yma"
-  - tavuk
-  - mantar
-  - bezelye
-  - "m\u0131s\u0131r"
-  - fasulye
-  - mercimek
-  - bulgur
-  - nohut
-  - "\u0131spanak"
+  - {fileID: 11400000, guid: 13f70c7df977a7d44b608c231e5450e4, type: 2}
+  - {fileID: 11400000, guid: d401daa5715677e459258e57050457ed, type: 2}
+  - {fileID: 11400000, guid: 853684bb4ef5cdc44a75f15e43b3945d, type: 2}
+  - {fileID: 11400000, guid: f311283838a618742ad3c321dde73aee, type: 2}
+  - {fileID: 11400000, guid: bde8bb5d75211544ba44be22bcba44bd, type: 2}
+  - {fileID: 11400000, guid: faa9e08a3d2a25c4da1d73f6879d24c4, type: 2}
+  - {fileID: 11400000, guid: eead345f1201f914dae4f6ad87b3f3bb, type: 2}
+  apiKey: 31
 --- !u!4 &740747897
 Transform:
   m_ObjectHideFlags: 0
