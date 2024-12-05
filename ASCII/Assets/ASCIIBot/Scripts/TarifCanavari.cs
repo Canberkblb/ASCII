@@ -319,6 +319,17 @@ public class TarifCanavari : MonoBehaviour
                 Debug.Log("----------------------------------------");
             }
 
+            var helperRobot = GameObject.Find("HelperUI")?.GetComponent<HelperRobot>();
+            if (helperRobot != null)
+            {
+                helperRobot.ShowMessage(new string[] { 
+                    "Selam Aşçı! Senin için yeni bir tarif hazırlandı!",
+                    $"{currentMenu.recipeName} !",
+                    "Malzemeleri doğru sırayla hazırlamayı unutma.",
+                    "İyi şanslar!"
+                });
+            }
+
             return currentMenu;
         }
         catch (Exception e)

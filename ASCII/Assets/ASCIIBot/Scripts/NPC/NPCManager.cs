@@ -6,13 +6,17 @@ public class NPCManager : MonoBehaviour
 {
     public static NPCManager Instance { get; private set; } // Singleton instance
 
+    [Header("NPC Ayarları")]
     public GameObject npcPrefab;
     public Transform meetPoint;
     public Transform spawnPoint;
     public Transform endPoint;
+
+    [Header("Sıra Ayarları")] 
     public GameObject linePoint;
     public int lineLength;
     public float pointSpacing = 2f;
+    public float spawnRate = 25f;
 
     private Transform[] linePoints;
     private List<GameObject> npcs = new List<GameObject>();
@@ -41,7 +45,7 @@ public class NPCManager : MonoBehaviour
         }
 
         CreateLinePoints();
-        InvokeRepeating("SpawnNPC", 0f, 5f);
+        InvokeRepeating("SpawnNPC", 0f, spawnRate); // Güncellendi: sabit değer yerine spawnRate kullanılıyor
         ///InvokeRepeating("SendNextNPCToEndPoint", 7f, 25f);
     }
 
