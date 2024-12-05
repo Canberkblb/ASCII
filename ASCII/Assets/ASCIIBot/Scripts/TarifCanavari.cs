@@ -86,6 +86,10 @@ public class MenuIngredient
 public class IngredientReference : MonoBehaviour
 {
     public Ingredient ingredient;
+    public bool isWashed = false;
+    public bool isCut = false;
+    public bool isCooked = false;
+    public bool isBaked = false;
 }
 
 public class TarifCanavari : MonoBehaviour
