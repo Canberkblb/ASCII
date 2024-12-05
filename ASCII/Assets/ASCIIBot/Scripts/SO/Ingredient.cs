@@ -6,6 +6,7 @@ public class Ingredient : ScriptableObject
     public string ingredientName;
     public GameObject ingredientCratePrefab;
     public GameObject ingredientPrefab;
+    public GameObject slicedPrefab;
 
     [Tooltip("Bu malzeme kesilmelidir.")]
     public bool requiresCutting;

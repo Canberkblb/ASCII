@@ -15,6 +15,7 @@ MonoBehaviour:
   ingredientName: Patates
   ingredientCratePrefab: {fileID: 6492311781044875429, guid: 6d164257a16f83940b1f67f7d5e58e36, type: 3}
   ingredientPrefab: {fileID: 7481031919293913933, guid: d5ea2baf7ca3c6e438f8b4f48faaa392, type: 3}
+  slicedPrefab: {fileID: 2428051884625965673, guid: fc6294cdd172fa04997af64764a0d3b5, type: 3}
   requiresCutting: 1
   requiresWashing: 1
   requiresCooking: 1

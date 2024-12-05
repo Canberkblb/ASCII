@@ -1357,6 +1357,11 @@ MonoBehaviour:
   - {fileID: 7733001563665413970, guid: 244380396d1927b4c8006fae2d04f9bb, type: 3}
   - {fileID: 3612625982061695720, guid: b0900d03737a87640abfce5cc11f41f2, type: 3}
   - {fileID: 4465214255355464719, guid: 42a823c45ffaa754c8b7aadfdefbe8b6, type: 3}
+  platePrefabs:
+  - {fileID: 8863397911432929182, guid: 313f3ff844b0a3e4aa2980e2d7d16f39, type: 3}
+  - {fileID: 3408241056028367946, guid: 2b17583bf35cb254bb29be5009a14ad3, type: 3}
+  - {fileID: 5010444559449536612, guid: 797e5d7fb5a22da42b351228135db426, type: 3}
+  potPrefab: {fileID: 3759118598193276458, guid: df20d16ebfc31904e93f7851b7dbe9c2, type: 3}
 --- !u!1001 &366699211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1924,7 +1929,7 @@ Transform:
   m_GameObject: {fileID: 593015267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.827873, y: -0.90080976, z: -6.77456}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5809,6 +5814,10 @@ PrefabInstance:
     - target: {fileID: 6662148106547388044, guid: b6220dc374e877d4a99889d5d3f6a7fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312718293791245065, guid: b6220dc374e877d4a99889d5d3f6a7fa, type: 3}
+      propertyPath: m_Name
+      value: Tencere(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
