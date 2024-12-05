@@ -87,7 +87,7 @@ public class IngredientReference : MonoBehaviour
 {
     public Ingredient ingredient;
     public string[] requiredActionsOrder;
-    private int currentActionIndex = 0;
+    public int currentActionIndex = 0;
     
     public bool isWashed = false;
     public bool isCut = false;
