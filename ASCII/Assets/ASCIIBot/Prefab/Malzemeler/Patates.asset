@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90834b44c1601f44816fcf68db37c12, type: 3}
+  m_Name: Patates
+  m_EditorClassIdentifier: 
+  ingredientName: Patates
+  ingredientCratePrefab: {fileID: 6492311781044875429, guid: 6d164257a16f83940b1f67f7d5e58e36, type: 3}
+  ingredientPrefab: {fileID: 7481031919293913933, guid: d5ea2baf7ca3c6e438f8b4f48faaa392, type: 3}
+  requiresCutting: 0
+  requiresWashing: 0
+  requiresCooking: 0
+  requiresBaking: 0

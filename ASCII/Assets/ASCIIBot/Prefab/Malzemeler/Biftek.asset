@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90834b44c1601f44816fcf68db37c12, type: 3}
+  m_Name: Biftek
+  m_EditorClassIdentifier: 
+  ingredientName: Biftek
+  ingredientCratePrefab: {fileID: 2483617340086197542, guid: 31603002b4c76cd419492180948dcf6a, type: 3}
+  ingredientPrefab: {fileID: 3768529815392951760, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
+  requiresCutting: 0
+  requiresWashing: 0
+  requiresCooking: 0
+  requiresBaking: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ingredient : ScriptableObject
 {
     public string ingredientName;
+    public GameObject ingredientCratePrefab;
     public GameObject ingredientPrefab;
 
     [Tooltip("Bu malzeme kesilmelidir.")]

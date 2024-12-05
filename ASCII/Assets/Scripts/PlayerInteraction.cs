@@ -19,6 +19,10 @@ public class PlayerInteraction : MonoBehaviour
         sphereCollider.isTrigger = true;
         sphereCollider.radius = interactionRadius;
 
+        Rigidbody rb = detectionObject.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         DetectionZone detectionZone = detectionObject.AddComponent<DetectionZone>();
         detectionZone.controller = this;
     }

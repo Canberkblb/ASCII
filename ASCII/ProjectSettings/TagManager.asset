@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Pickup
   - Crate
+  - Counter
+  - Oven
+  - Wash
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90834b44c1601f44816fcf68db37c12, type: 3}
+  m_Name: Peynir
+  m_EditorClassIdentifier: 
+  ingredientName: Peynir
+  ingredientCratePrefab: {fileID: 868664970493587084, guid: 379c9e9075e69204e9188a9c54dac38e, type: 3}
+  ingredientPrefab: {fileID: 7300833722347272606, guid: 9d6c37e94a459cf4194cf9f414b6ceba, type: 3}
+  requiresCutting: 0
+  requiresWashing: 0
+  requiresCooking: 0
+  requiresBaking: 0
