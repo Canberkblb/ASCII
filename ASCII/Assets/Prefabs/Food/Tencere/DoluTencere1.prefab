@@ -84,7 +84,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7094649543224552644, guid: c75e5620294409a47b1aaddcae6a3b6c, type: 3}
       propertyPath: m_Name
-      value: pot_B Variant
+      value: DoluTencere1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094649543224552644, guid: c75e5620294409a47b1aaddcae6a3b6c, type: 3}
+      propertyPath: m_TagString
+      value: Tencere
       objectReference: {fileID: 0}
     - target: {fileID: 7583659932121642622, guid: c75e5620294409a47b1aaddcae6a3b6c, type: 3}
       propertyPath: m_LocalPosition.x

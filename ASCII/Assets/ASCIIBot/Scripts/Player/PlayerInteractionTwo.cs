@@ -180,15 +180,27 @@ public class PlayerInteractionTwo : MonoBehaviour
     {
         Transform stoveHoldPosition = stoveObject.transform.Find("HoldPosition");
         currentStove = stoveObject;
+        var menu = TarifCanavari.Instance.currentMenu;
 
         if (isHolding && holdPosition.childCount > 0)
         {
-            if (stoveHoldPosition != null && stoveHoldPosition.childCount <= 5)
+            if (stoveHoldPosition != null && stoveHoldPosition.childCount < menu.ingredients.Count)
             {
                 Transform heldItem = holdPosition.GetChild(0);
                 IngredientReference ingredientRef = heldItem.GetComponent<IngredientReference>();
                 
-                if (ingredientRef != null)
+                bool ingredientAlreadyAdded = false;
+                foreach (Transform child in stoveHoldPosition)
+                {
+                    var childIngredient = child.GetComponent<IngredientReference>();
+                    if (childIngredient != null && childIngredient.ingredient.ingredientName == ingredientRef.ingredient.ingredientName)
+                    {
+                        ingredientAlreadyAdded = true;
+                        break;
+                    }
+                }
+                
+                if (ingredientRef != null && !ingredientAlreadyAdded)
                 {
                     string nextAction = ingredientRef.GetNextRequiredAction();
                     if (nextAction == "cook")
@@ -249,7 +261,7 @@ public class PlayerInteractionTwo : MonoBehaviour
     {
         Debug.Log("Pişirme tamamlandı!");
         isCooking = false;
-        
+    
         if (currentStove != null)
         {
             Transform holdPos = currentStove.transform.Find("HoldPosition");
@@ -262,24 +274,32 @@ public class PlayerInteractionTwo : MonoBehaviour
                     {
                         ingredientRef.CompleteAction("cook");
                     }
+                    Destroy(child.gameObject);
                 }
             }
+            
+            Transform pot = currentStove.transform.Find("Tencere");
+            if (pot != null && pot.CompareTag("Tencere"))
+            {
+                Destroy(pot.gameObject);
+            }
         }
-        
+    
         if (activeProgressCanvas != null)
         {
             Destroy(activeProgressCanvas);
             activeProgressCanvas = null;
             activeProgressBar = null;
         }
-        
+    
         if (CookedRecipes != null && CookedRecipes.Count > 0)
         {
             int randomIndex = Random.Range(0, CookedRecipes.Count);
             Transform spawnPosition = currentStove.transform.Find("SpawnPosition");
             if (spawnPosition != null)
             {
-                Instantiate(CookedRecipes[randomIndex], spawnPosition.position, Quaternion.identity);
+                GameObject cookedItem = Instantiate(CookedRecipes[randomIndex], spawnPosition.position, Quaternion.identity);
+                cookedItem.transform.SetParent(spawnPosition);
             }
         }
     }
