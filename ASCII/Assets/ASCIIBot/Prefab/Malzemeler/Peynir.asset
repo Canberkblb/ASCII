@@ -19,3 +19,5 @@ MonoBehaviour:
   requiresWashing: 0
   requiresCooking: 1
   requiresBaking: 0
+  requiredActionsOrder:
+  - cook

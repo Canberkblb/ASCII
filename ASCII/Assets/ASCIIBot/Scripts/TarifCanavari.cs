@@ -86,10 +86,46 @@ public class MenuIngredient
 public class IngredientReference : MonoBehaviour
 {
     public Ingredient ingredient;
+    public string[] requiredActionsOrder;
+    private int currentActionIndex = 0;
+    
     public bool isWashed = false;
     public bool isCut = false;
     public bool isCooked = false;
     public bool isBaked = false;
+
+    public string GetNextRequiredAction()
+    {
+        if (requiredActionsOrder != null && currentActionIndex < requiredActionsOrder.Length)
+        {
+            return requiredActionsOrder[currentActionIndex];
+        }
+        return null;
+    }
+
+    public bool CompleteAction(string action)
+    {
+        if (GetNextRequiredAction() != action)
+        {
+            return false;
+        }
+
+        switch (action)
+        {
+            case "wash": isWashed = true; break;
+            case "cut": isCut = true; break;
+            case "cook": isCooked = true; break;
+            case "bake": isBaked = true; break;
+        }
+
+        currentActionIndex++;
+        return true;
+    }
+
+    public bool IsCompleted()
+    {
+        return currentActionIndex >= requiredActionsOrder.Length;
+    }
 }
 
 public class TarifCanavari : MonoBehaviour
@@ -253,7 +289,9 @@ public class TarifCanavari : MonoBehaviour
                     
                     foreach(Transform child in spawnedIngredient.transform) {
                         if(child.CompareTag("Pickup")) {
-                            child.gameObject.AddComponent<IngredientReference>().ingredient = matchingIngredient;
+                            var ingredientRef = child.gameObject.AddComponent<IngredientReference>();
+                            ingredientRef.ingredient = matchingIngredient;
+                            ingredientRef.requiredActionsOrder = matchingIngredient.requiredActionsOrder;
                         }
                     }
 

@@ -15,4 +15,7 @@ public class Ingredient : ScriptableObject
     public bool requiresCooking;
     [Tooltip("Bu malzeme fırınlanmalıdır.")]
     public bool requiresBaking;
+
+    [Tooltip("Gerekli işlemlerin sırası.")]
+    public string[] requiredActionsOrder;
 }

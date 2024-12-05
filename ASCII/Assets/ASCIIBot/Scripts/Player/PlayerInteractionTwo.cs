@@ -44,6 +44,11 @@ public class PlayerInteractionTwo : MonoBehaviour
         {
             HandleInteraction();
         }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            NPCManager.Instance.SendNextNPCToEndPoint();
+        }
         
         if (activeProgressCanvas != null)
         {
@@ -183,18 +188,25 @@ public class PlayerInteractionTwo : MonoBehaviour
                 Transform heldItem = holdPosition.GetChild(0);
                 IngredientReference ingredientRef = heldItem.GetComponent<IngredientReference>();
                 
-                if (ingredientRef != null && ingredientRef.ingredient.requiresCooking)
+                if (ingredientRef != null)
                 {
-                    heldItem.SetParent(stoveHoldPosition);
-                    heldItem.localPosition = Vector3.zero;
-                    heldItem.localRotation = Quaternion.identity;
-                
-                    isHolding = false;
-                    if (CheckAllIngredientsOnStove(stoveObject))
+                    string nextAction = ingredientRef.GetNextRequiredAction();
+                    if (nextAction == "cook")
                     {
-                        StartCooking(stoveObject, ingredientRef);
+                        heldItem.SetParent(stoveHoldPosition);
+                        heldItem.localPosition = Vector3.zero;
+                        heldItem.localRotation = Quaternion.identity;
+                
+                        isHolding = false;
+                        if (CheckAllIngredientsOnStove(stoveObject))
+                        {
+                            StartCooking(stoveObject, ingredientRef);
+                        }
                     }
-                    Debug.Log("Nesne counter'a bırakıldı.");
+                    else
+                    {
+                        Debug.Log("Bu malzeme şu anda pişirilemez! Önce " + nextAction + " işlemi yapılmalı.");
+                    }
                 }
             }
             else
@@ -238,6 +250,22 @@ public class PlayerInteractionTwo : MonoBehaviour
         Debug.Log("Pişirme tamamlandı!");
         isCooking = false;
         
+        if (currentStove != null)
+        {
+            Transform holdPos = currentStove.transform.Find("HoldPosition");
+            if (holdPos != null)
+            {
+                foreach (Transform child in holdPos)
+                {
+                    IngredientReference ingredientRef = child.GetComponent<IngredientReference>();
+                    if (ingredientRef != null)
+                    {
+                        ingredientRef.CompleteAction("cook");
+                    }
+                }
+            }
+        }
+        
         if (activeProgressCanvas != null)
         {
             Destroy(activeProgressCanvas);
@@ -267,15 +295,22 @@ public class PlayerInteractionTwo : MonoBehaviour
                 Transform heldItem = holdPosition.GetChild(0);
                 IngredientReference ingredientRef = heldItem.GetComponent<IngredientReference>();
                 
-                if (ingredientRef != null && ingredientRef.ingredient.requiresWashing)
+                if (ingredientRef != null)
                 {
-                    heldItem.SetParent(washHoldPosition);
-                    heldItem.localPosition = Vector3.zero;
-                    heldItem.localRotation = Quaternion.identity;
+                    string nextAction = ingredientRef.GetNextRequiredAction();
+                    if (nextAction == "wash")
+                    {
+                        heldItem.SetParent(washHoldPosition);
+                        heldItem.localPosition = Vector3.zero;
+                        heldItem.localRotation = Quaternion.identity;
                 
-                    isHolding = false;
-                    StartWashing(washObject, ingredientRef);
-                    Debug.Log("Nesne wash'a bırakıldı.");
+                        isHolding = false;
+                        StartWashing(washObject, ingredientRef);
+                    }
+                    else
+                    {
+                        Debug.Log("Bu malzeme şu anda yıkanamaz! Önce " + nextAction + " işlemi yapılmalı.");
+                    }
                 }
             }
             else
@@ -320,6 +355,20 @@ public class PlayerInteractionTwo : MonoBehaviour
         Debug.Log("Yıkama tamamlandı!");
         isWashing = false;
         
+        Transform washObject = activeProgressCanvas.transform.parent;
+        if (washObject != null)
+        {
+            Transform holdPos = washObject.Find("HoldPosition");
+            if (holdPos != null && holdPos.childCount > 0)
+            {
+                IngredientReference ingredientRef = holdPos.GetChild(0).GetComponent<IngredientReference>();
+                if (ingredientRef != null)
+                {
+                    ingredientRef.CompleteAction("wash");
+                }
+            }
+        }
+        
         if (activeProgressCanvas != null)
         {
             Destroy(activeProgressCanvas);
@@ -330,24 +379,31 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private void InteractWithCuttingBoard(GameObject cuttingBoardObject)
     {
-        Transform washHoldPosition = cuttingBoardObject.transform.Find("HoldPosition");
+        Transform cutHoldPosition = cuttingBoardObject.transform.Find("HoldPosition");
 
         if (isHolding && holdPosition.childCount > 0)
         {
-            if (washHoldPosition != null && washHoldPosition.childCount == 0)
+            if (cutHoldPosition != null && cutHoldPosition.childCount == 0)
             {
                 Transform heldItem = holdPosition.GetChild(0);
                 IngredientReference ingredientRef = heldItem.GetComponent<IngredientReference>();
                 
-                if (ingredientRef != null && ingredientRef.ingredient.requiresCutting)
+                if (ingredientRef != null)
                 {
-                    heldItem.SetParent(washHoldPosition);
-                    heldItem.localPosition = Vector3.zero;
-                    heldItem.localRotation = Quaternion.identity;
+                    string nextAction = ingredientRef.GetNextRequiredAction();
+                    if (nextAction == "cut")
+                    {
+                        heldItem.SetParent(cutHoldPosition);
+                        heldItem.localPosition = Vector3.zero;
+                        heldItem.localRotation = Quaternion.identity;
                 
-                    isHolding = false;
-                    StartCutting(cuttingBoardObject, ingredientRef);
-                    Debug.Log("Nesne wash'a bırakıldı.");
+                        isHolding = false;
+                        StartCutting(cuttingBoardObject, ingredientRef);
+                    }
+                    else
+                    {
+                        Debug.Log("Bu malzeme şu anda kesilemez! Önce " + nextAction + " işlemi yapılmalı.");
+                    }
                 }
             }
             else
@@ -355,9 +411,9 @@ public class PlayerInteractionTwo : MonoBehaviour
                 Debug.Log("Wash dolu, nesne bırakılamaz!");
             }
         }
-        else if (!isHolding && washHoldPosition != null && washHoldPosition.childCount > 0 && !isCutting)
+        else if (!isHolding && cutHoldPosition != null && cutHoldPosition.childCount > 0 && !isCutting)
         {
-            Transform counterItem = washHoldPosition.GetChild(0);
+            Transform counterItem = cutHoldPosition.GetChild(0);
 
             counterItem.SetParent(holdPosition);
             counterItem.localPosition = Vector3.zero;
@@ -390,6 +446,20 @@ public class PlayerInteractionTwo : MonoBehaviour
     {
         Debug.Log("Kesme tamamlandı!");
         isCutting = false;
+        
+        Transform cutObject = activeProgressCanvas.transform.parent;
+        if (cutObject != null)
+        {
+            Transform holdPos = cutObject.Find("HoldPosition");
+            if (holdPos != null && holdPos.childCount > 0)
+            {
+                IngredientReference ingredientRef = holdPos.GetChild(0).GetComponent<IngredientReference>();
+                if (ingredientRef != null)
+                {
+                    ingredientRef.CompleteAction("cut");
+                }
+            }
+        }
         
         if (activeProgressCanvas != null)
         {
