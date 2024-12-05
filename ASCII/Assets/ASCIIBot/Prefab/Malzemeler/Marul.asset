@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: Marul
   ingredientCratePrefab: {fileID: 1884617716169245996, guid: ba455ee497c671442bb6ac70d76cc22e, type: 3}
   ingredientPrefab: {fileID: 3555350130233417387, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 1
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

@@ -9,6 +9,9 @@ TagManager:
   - Counter
   - Oven
   - Wash
+  - Stove
+  - CuttingBoard
+  - Tencere
   layers:
   - Default
   - TransparentFX

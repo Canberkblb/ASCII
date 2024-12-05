@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: Biftek
   ingredientCratePrefab: {fileID: 2483617340086197542, guid: 31603002b4c76cd419492180948dcf6a, type: 3}
   ingredientPrefab: {fileID: 3768529815392951760, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 0
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

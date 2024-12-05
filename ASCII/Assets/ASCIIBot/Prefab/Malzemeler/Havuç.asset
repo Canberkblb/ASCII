@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: "Havu\xE7"
   ingredientCratePrefab: {fileID: 9036247649609522651, guid: c760ebd899125c14791c927e098de0f7, type: 3}
   ingredientPrefab: {fileID: 2515462485730980796, guid: 7a0694492b9fb4f4391cec9e99191856, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 1
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

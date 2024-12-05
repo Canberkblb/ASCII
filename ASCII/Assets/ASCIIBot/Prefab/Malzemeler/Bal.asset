@@ -17,5 +17,5 @@ MonoBehaviour:
   ingredientPrefab: {fileID: 5607137513112802349, guid: 24fca6860e817fc49b429a416a0e5116, type: 3}
   requiresCutting: 0
   requiresWashing: 0
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

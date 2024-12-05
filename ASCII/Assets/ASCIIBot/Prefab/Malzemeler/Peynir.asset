@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: Peynir
   ingredientCratePrefab: {fileID: 868664970493587084, guid: 379c9e9075e69204e9188a9c54dac38e, type: 3}
   ingredientPrefab: {fileID: 7300833722347272606, guid: 9d6c37e94a459cf4194cf9f414b6ceba, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 0
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

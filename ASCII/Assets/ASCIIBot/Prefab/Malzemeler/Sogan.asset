@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: Sogan
   ingredientCratePrefab: {fileID: 8573862032078325065, guid: 60843348028df024daa9cabbdc4ce46e, type: 3}
   ingredientPrefab: {fileID: 4201781290665949581, guid: 6ed0eff6295c0d8419aa4dc5d9bcd82c, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 1
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredientName: Domates
   ingredientCratePrefab: {fileID: 8090981040205898056, guid: 9816a919794a03d4c9d389e3e10a27ce, type: 3}
   ingredientPrefab: {fileID: 3779671472596822685, guid: 2f07b5919f4882f428672dabafea910b, type: 3}
-  requiresCutting: 0
+  requiresCutting: 1
   requiresWashing: 1
-  requiresCooking: 0
+  requiresCooking: 1
   requiresBaking: 0
