@@ -675,18 +675,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 9058896896110403571}
     m_Modifications:
     - target: {fileID: 3532064001891951415, guid: 6ed0eff6295c0d8419aa4dc5d9bcd82c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532064001891951415, guid: 6ed0eff6295c0d8419aa4dc5d9bcd82c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532064001891951415, guid: 6ed0eff6295c0d8419aa4dc5d9bcd82c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3532064001891951415, guid: 6ed0eff6295c0d8419aa4dc5d9bcd82c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18638611
       objectReference: {fileID: 0}
@@ -898,7 +886,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: OnionCrate Variant
+      value: OnionCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x

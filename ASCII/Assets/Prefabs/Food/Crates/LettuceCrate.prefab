@@ -10,7 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: LettuceCrate Variant
+      value: LettuceCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,18 +108,6 @@ PrefabInstance:
     - target: {fileID: 3555350130233417387, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
       propertyPath: m_Name
       value: Lettuce (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4187490823149175825, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4187490823149175825, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4187490823149175825, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4187490823149175825, guid: 295ddec874be4ea4aa7055ef83314f72, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.182193
+      value: 0.18638611
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 0.10000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.903972
+      value: -0.20256615
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -50,7 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
       propertyPath: m_Name
-      value: food_ingredient_onion
+      value: Onion
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a0057dd4e9a4fe94390a3fd735fb042c, type: 3}
+      propertyPath: m_TagString
+      value: Pickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

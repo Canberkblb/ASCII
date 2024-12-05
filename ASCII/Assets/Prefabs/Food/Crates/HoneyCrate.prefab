@@ -527,18 +527,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 3331312873548209263}
     m_Modifications:
     - target: {fileID: 5087762942370991767, guid: 24fca6860e817fc49b429a416a0e5116, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087762942370991767, guid: 24fca6860e817fc49b429a416a0e5116, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087762942370991767, guid: 24fca6860e817fc49b429a416a0e5116, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087762942370991767, guid: 24fca6860e817fc49b429a416a0e5116, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.3449068
       objectReference: {fileID: 0}
@@ -750,7 +738,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: HoneyCrate Variant
+      value: HoneyCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x

@@ -161,18 +161,6 @@ PrefabInstance:
       value: Steak (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4541688127785748330, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4541688127785748330, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4541688127785748330, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4541688127785748330, guid: 62bab7e9f2d80e6488bf37a1364e3088, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.50464916
       objectReference: {fileID: 0}
@@ -380,7 +368,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: SteakCrate Variant
+      value: SteakCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x

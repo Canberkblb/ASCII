@@ -87,18 +87,6 @@ PrefabInstance:
       value: Carrot
       objectReference: {fileID: 0}
     - target: {fileID: 3000355444031006982, guid: 7a0694492b9fb4f4391cec9e99191856, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000355444031006982, guid: 7a0694492b9fb4f4391cec9e99191856, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000355444031006982, guid: 7a0694492b9fb4f4391cec9e99191856, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000355444031006982, guid: 7a0694492b9fb4f4391cec9e99191856, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5716591
       objectReference: {fileID: 0}
@@ -750,7 +738,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: CarrotCrate Variant
+      value: CarrotCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x

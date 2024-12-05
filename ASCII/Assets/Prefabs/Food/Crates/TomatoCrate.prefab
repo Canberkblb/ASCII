@@ -13,18 +13,6 @@ PrefabInstance:
       value: Tomato (6)
       objectReference: {fileID: 0}
     - target: {fileID: 4557580706288496679, guid: 2f07b5919f4882f428672dabafea910b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557580706288496679, guid: 2f07b5919f4882f428672dabafea910b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557580706288496679, guid: 2f07b5919f4882f428672dabafea910b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557580706288496679, guid: 2f07b5919f4882f428672dabafea910b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21147156
       objectReference: {fileID: 0}
@@ -750,7 +738,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_Name
-      value: TomatoCrate Variant
+      value: TomatoCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162042754395392550, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
+      propertyPath: m_TagString
+      value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 1975874170663047324, guid: 7403ca8f24cece44bb8a32b59d2ce219, type: 3}
       propertyPath: m_LocalPosition.x
