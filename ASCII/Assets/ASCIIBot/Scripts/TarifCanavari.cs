@@ -88,7 +88,7 @@ public class IngredientReference : MonoBehaviour
     public Ingredient ingredient;
     public string[] requiredActionsOrder;
     public int currentActionIndex = 0;
-    
+
     public bool isWashed = false;
     public bool isCut = false;
     public bool isCooked = false;
@@ -169,18 +169,21 @@ public class TarifCanavari : MonoBehaviour
 
     public Menu currentMenu;
 
-    private async void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            System.Random rnd = new System.Random();
-            int malzemeSayisi = 4;
-            var secilenMalzemeler = ingredients.OrderBy(x => rnd.Next()).Take(malzemeSayisi).ToList();
+        GenerateRecipe();
+    }
 
-            string malzemeListesi = string.Join(", ", secilenMalzemeler.Select(i => i.ingredientName));
+    public async void GenerateRecipe()
+    {
+        System.Random rnd = new System.Random();
+        int malzemeSayisi = 4;
+        var secilenMalzemeler = ingredients.OrderBy(x => rnd.Next()).Take(malzemeSayisi).ToList();
 
-            string systemPrompt = "JSON formatında yanıt ver. Verilen malzemelerle yapılabilecek bir yemek tarifi oluştur.";
-            string userPrompt = $@"Şu malzemelerden bir yemek tarifi oluştur: {malzemeListesi}. 
+        string malzemeListesi = string.Join(", ", secilenMalzemeler.Select(i => i.ingredientName));
+
+        string systemPrompt = "JSON formatında yanıt ver. Verilen malzemelerle yapılabilecek bir yemek tarifi oluştur.";
+        string userPrompt = $@"Şu malzemelerden bir yemek tarifi oluştur: {malzemeListesi}. 
                 Her malzeme için gerekli işlemleri belirt (cut:kesmek, wash:yıkamak, cook:pişirmek, bake:fırınlamak).
                 Şu JSON formatını kullan: {{
                     'recipe_name': 'tarif adı',
@@ -191,13 +194,12 @@ public class TarifCanavari : MonoBehaviour
                     ]
                 }}";
 
-            string response = await CallGeminiAPI(userPrompt, systemPrompt);
-            Menu olusturulanMenu = ParseAndLogRecipes(response);
+        string response = await CallGeminiAPI(userPrompt, systemPrompt);
+        Menu olusturulanMenu = ParseAndLogRecipes(response);
 
-            if (olusturulanMenu != null && isDebug)
-            {
-                Debug.Log($"Oluşturulan menü: {olusturulanMenu.recipeName}");
-            }
+        if (olusturulanMenu != null && isDebug)
+        {
+            Debug.Log($"Oluşturulan menü: {olusturulanMenu.recipeName}");
         }
     }
 
@@ -286,9 +288,11 @@ public class TarifCanavari : MonoBehaviour
                         spawnPoint.position,
                         spawnPoint.rotation
                     );
-                    
-                    foreach(Transform child in spawnedIngredient.transform) {
-                        if(child.CompareTag("Pickup")) {
+
+                    foreach (Transform child in spawnedIngredient.transform)
+                    {
+                        if (child.CompareTag("Pickup"))
+                        {
                             var ingredientRef = child.gameObject.AddComponent<IngredientReference>();
                             ingredientRef.ingredient = matchingIngredient;
                             ingredientRef.requiredActionsOrder = matchingIngredient.requiredActionsOrder;
@@ -322,7 +326,7 @@ public class TarifCanavari : MonoBehaviour
             var helperRobot = GameObject.Find("HelperUI")?.GetComponent<HelperRobot>();
             if (helperRobot != null)
             {
-                helperRobot.ShowMessage(new string[] { 
+                helperRobot.ShowMessage(new string[] {
                     "Selam Aşçı! Senin için yeni bir tarif hazırlandı!",
                     $"{currentMenu.recipeName} !",
                     "Malzemeleri doğru sırayla hazırlamayı unutma.",

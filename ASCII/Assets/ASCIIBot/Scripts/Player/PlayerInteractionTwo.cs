@@ -65,7 +65,7 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private void HandleRaycast()
     {
-        Vector3 rayOrigin = playerTransform.position + Vector3.down * 0.5f;
+        Vector3 rayOrigin = playerTransform.position + Vector3.up * 0.5f;
         Vector3 rayDirection = playerTransform.forward;
 
         Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.blue);
@@ -82,6 +82,9 @@ public class PlayerInteractionTwo : MonoBehaviour
                     break;
                 case "Wash":
                     Debug.Log("Yıkama alanı tespit edildi!");
+                    break;
+                case "npctable":
+                    Debug.Log("NPC Masası tespit edildi!");
                     break;
             }
         }
@@ -108,6 +111,9 @@ public class PlayerInteractionTwo : MonoBehaviour
                     break;
                 case "CuttingBoard":
                     InteractWithCuttingBoard(hitObject);
+                    break;
+                case "npctable":
+                    InteractWithNPCTable(hitObject);
                     break;
             }
         }
@@ -184,6 +190,41 @@ public class PlayerInteractionTwo : MonoBehaviour
         }
     }
 
+    private void InteractWithNPCTable(GameObject tableObject)
+    {
+        Transform tableHoldPosition = tableObject.transform.Find("HoldPosition");
+
+        if (isHolding && holdPosition.childCount > 0)
+        {
+            if (tableHoldPosition != null && tableHoldPosition.childCount == 0)
+            {
+                Transform heldItem = holdPosition.GetChild(0);
+
+                heldItem.SetParent(tableHoldPosition);
+                heldItem.localPosition = Vector3.zero;
+                heldItem.localRotation = Quaternion.identity;
+
+                isHolding = false;
+                Debug.Log("Yemek NPC masasına bırakıldı.");
+            }
+            else
+            {
+                Debug.Log("NPC masası dolu, yemek bırakılamaz!");
+            }
+        }
+        else if (!isHolding && tableHoldPosition != null && tableHoldPosition.childCount > 0)
+        {
+            Transform tableItem = tableHoldPosition.GetChild(0);
+
+            tableItem.SetParent(holdPosition);
+            tableItem.localPosition = Vector3.zero;
+            tableItem.localRotation = Quaternion.identity;
+
+            isHolding = true;
+            Debug.Log("Yemek NPC masasından alındı.");
+        }
+    }
+
     private void InteractWithStove(GameObject stoveObject)
     {
         Transform stoveHoldPosition = stoveObject.transform.Find("HoldPosition");
@@ -199,6 +240,7 @@ public class PlayerInteractionTwo : MonoBehaviour
                 GameObject spawnedPlate = Instantiate(platePrefabs[randomPlateIndex], holdPosition.position,
                     holdPosition.rotation);
                 spawnedPlate.transform.SetParent(holdPosition);
+                spawnedPlate.tag = "yemek";
 
                 isHolding = true;
                 plateSpawnCount++;

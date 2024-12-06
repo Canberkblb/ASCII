@@ -194,8 +194,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 3183860760307957412}
   endPoint: {fileID: 2567941523748514007}
   linePoint: {fileID: 7844657323984239598}
-  lineLength: 6
-  pointSpacing: 2
+  lineLength: 10
+  pointSpacing: 4
+  spawnRate: 25
 --- !u!1 &7081299238210184742
 GameObject:
   m_ObjectHideFlags: 0

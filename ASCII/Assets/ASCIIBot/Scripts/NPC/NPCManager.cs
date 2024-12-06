@@ -17,6 +17,7 @@ public class NPCManager : MonoBehaviour
     public int lineLength;
     public float pointSpacing = 2f;
     public float spawnRate = 25f;
+    public float npcStartDelay = 0f;
 
     private Transform[] linePoints;
     private List<GameObject> npcs = new List<GameObject>();
@@ -45,8 +46,7 @@ public class NPCManager : MonoBehaviour
         }
 
         CreateLinePoints();
-        InvokeRepeating("SpawnNPC", 0f, spawnRate); // Güncellendi: sabit değer yerine spawnRate kullanılıyor
-        ///InvokeRepeating("SendNextNPCToEndPoint", 7f, 25f);
+        InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate); // Güncellendi: sabit değer yerine spawnRate kullanılıyor
     }
 
     void CreateLinePoints()
@@ -96,9 +96,16 @@ public class NPCManager : MonoBehaviour
         {
             GameObject npc = npcs[i];
             NavMeshAgent agent = npc.GetComponent<NavMeshAgent>();
+            NPC npcScript = npc.GetComponent<NPC>();
+            
             if (agent != null)
             {
                 agent.SetDestination(linePoints[i].position);
+                
+                if (i == 0 && npcScript != null) // En öndeki NPC için
+                {
+                    npcScript.isMyTime = true;
+                }
             }
         }
     }

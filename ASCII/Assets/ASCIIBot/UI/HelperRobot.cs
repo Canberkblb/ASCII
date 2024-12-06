@@ -52,12 +52,6 @@ public class HelperRobot : MonoBehaviour
     
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            ShowMessage(new string[] { "Merhaba, nasıl yardımcı olabilirim?", "Bugün hava çok güzel.", "Yardımcı olabileceğim başka bir şey var mı?" });
-        }
-
-        // Ekrana tıklandığında bir sonraki mesajı göster
         if (Input.GetMouseButtonDown(0) && isShowingMessage)
         {
             DisplayNextMessage();
