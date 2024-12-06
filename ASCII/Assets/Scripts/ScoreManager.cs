@@ -136,15 +136,15 @@ public class ScoreManager : MonoBehaviour
                 ListView.ListItem placeHolder = new ListView.ListItem();
 
                 placeHolder.row0 = new ListView.ListRow();
-                placeHolder.row0.rowText = "RANK";
+                placeHolder.row0.rowText = "Derece";
                 placeHolder.row0.usePreferredWidth = false;
 
                 placeHolder.row1 = new ListView.ListRow();
-                placeHolder.row1.rowText = "NAME";
+                placeHolder.row1.rowText = "İsim";
                 placeHolder.row1.usePreferredWidth = false;
 
                 placeHolder.row2 = new ListView.ListRow();
-                placeHolder.row2.rowText = "TIME";
+                placeHolder.row2.rowText = "Skor";
                 placeHolder.row2.usePreferredWidth = false;
 
                 leaderboardList.listItems.Add(placeHolder);
@@ -232,7 +232,10 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseScore()
     {
-        currentScore--;
+        if (currentScore > 0)
+        {
+            currentScore--;
+        }
         OnScoreChanged?.Invoke(currentScore);
         Debug.Log($"Skor azaldı: {currentScore}");
     }

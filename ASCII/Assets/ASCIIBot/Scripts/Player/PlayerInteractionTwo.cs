@@ -89,15 +89,15 @@ public class PlayerInteractionTwo : MonoBehaviour
                     case "cook":
                         cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
                         washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
-                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 5.88f;
                         break;
                     case "wash":
                         cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
-                        washMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        washMACHINE.GetComponent<Outline>().OutlineWidth = 5.88f;
                         stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
                         break;
                     case "cut":
-                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 5.88f;
                         washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
                         stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
                         break;

@@ -185,7 +185,7 @@ public class TarifCanavari : MonoBehaviour
         }
 
         System.Random rnd = new System.Random();
-        int malzemeSayisi = 4;
+        int malzemeSayisi = 3;
         var secilenMalzemeler = ingredients.OrderBy(x => rnd.Next()).Take(malzemeSayisi).ToList();
 
         string malzemeListesi = string.Join(", ", secilenMalzemeler.Select(i => i.ingredientName));
