@@ -171,11 +171,19 @@ public class TarifCanavari : MonoBehaviour
 
     private void Start()
     {
-        GenerateRecipe();
+        //GenerateRecipe();
     }
 
     public async void GenerateRecipe()
     {
+        GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Spawn");
+        spawnPoints = new Transform[spawnObjects.Length];
+        
+        for(int i = 0; i < spawnObjects.Length; i++)
+        {
+            spawnPoints[i] = spawnObjects[i].transform;
+        }
+
         System.Random rnd = new System.Random();
         int malzemeSayisi = 4;
         var secilenMalzemeler = ingredients.OrderBy(x => rnd.Next()).Take(malzemeSayisi).ToList();

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerInteractionTwo : MonoBehaviour
 {
-    [Header("Raycast Ayarları")] [SerializeField]
+    [Header("Raycast Ayarları")]
+    [SerializeField]
     private float rayDistance = 2f;
 
     [SerializeField] private LayerMask interactionLayer;
 
-    [Header("Etkileşim")] [SerializeField] private Transform holdPosition;
+    [Header("Etkileşim")][SerializeField] private Transform holdPosition;
     private bool isHolding = false;
 
-    [Header("ProgressBar")] [SerializeField]
+    [Header("ProgressBar")]
+    [SerializeField]
     private ProgressBar progressBarPrefab;
 
     [SerializeField] private GameObject canvasPrefab;
@@ -21,7 +23,8 @@ public class PlayerInteractionTwo : MonoBehaviour
     private GameObject activeProgressCanvas;
     private Camera mainCamera;
 
-    [Header("FoodRelated")] [SerializeField]
+    [Header("FoodRelated")]
+    [SerializeField]
     private List<GameObject> CookedRecipes;
 
     [SerializeField] private List<GameObject> platePrefabs;
@@ -35,6 +38,10 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private Transform playerTransform;
     private RaycastHit hit;
+    [Header("Outline Related")]
+    [SerializeField] private GameObject stovenMACHINE;
+    [SerializeField] private GameObject washMACHINE;
+    [SerializeField] private GameObject cutMACHINE;
 
     void Start()
     {
@@ -46,7 +53,15 @@ public class PlayerInteractionTwo : MonoBehaviour
     {
         HandleRaycast();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began && touch.position.x > Screen.width / 2)
+            {
+                HandleInteraction();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             HandleInteraction();
         }
@@ -60,6 +75,43 @@ public class PlayerInteractionTwo : MonoBehaviour
         {
             activeProgressCanvas.transform.LookAt(mainCamera.transform);
             activeProgressCanvas.transform.Rotate(0, 180, 0);
+        }
+
+        if (isHolding)
+        {
+            GameObject heldItem = holdPosition.GetChild(0).gameObject;
+            if (!heldItem.CompareTag("yemek"))
+            {
+                string response = heldItem.GetComponent<IngredientReference>().GetNextRequiredAction();
+                
+                switch (response)
+                {
+                    case "cook":
+                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        break;
+                    case "wash":
+                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        washMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        break;
+                    case "cut":
+                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 3.88f;
+                        washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        break;
+                    default:
+                        cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+                        break;
+                }
+            }
+        }else{
+            cutMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+            washMACHINE.GetComponent<Outline>().OutlineWidth = 0;
+            stovenMACHINE.GetComponent<Outline>().OutlineWidth = 0;
         }
     }
 

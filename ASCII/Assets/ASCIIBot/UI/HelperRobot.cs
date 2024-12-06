@@ -6,6 +6,7 @@ public class HelperRobot : MonoBehaviour
     [SerializeField] private GameObject chatPanel;
     [SerializeField] private GameObject robotImage;
     [SerializeField] private TMPro.TextMeshProUGUI chatText;
+    [SerializeField] private GameObject joystickCanvas;
     
     private Queue<string> messageQueue = new Queue<string>();
     private bool isShowingMessage = false;
@@ -41,6 +42,11 @@ public class HelperRobot : MonoBehaviour
         {
             isShowingMessage = false;
             SetUIVisibility(false);
+
+            if(!joystickCanvas.activeSelf)
+            {
+                joystickCanvas.SetActive(true);
+            }
         }
     }
     
@@ -52,7 +58,17 @@ public class HelperRobot : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isShowingMessage)
+        // Mobil için dokunma kontrolü
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began && isShowingMessage)
+            {
+                DisplayNextMessage();
+            }
+        }
+        // PC için fare kontrolü devam etsin
+        else if (Input.GetMouseButtonDown(0) && isShowingMessage)
         {
             DisplayNextMessage();
         }

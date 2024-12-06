@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
         if (level > maxLevel)
         {
             Debug.Log("Tüm leveller tamamlandı!");
+            DoMaxLevelStuff();
             return;
         }
 
@@ -49,6 +50,13 @@ public class LevelManager : MonoBehaviour
         Debug.Log($"Level {level} başladı! Bu level için {totalNPCsForCurrentLevel} NPC spawn edilecek.");
         
         NPCManager.Instance.ResetForNewLevel();
+    }
+
+    private void DoMaxLevelStuff()
+    {
+        Debug.Log("Max level stuff");
+
+        ScoreManager.Instance.DoMaxLevelStuff();
     }
 
     private int CalculateNPCCountForLevel(int level)

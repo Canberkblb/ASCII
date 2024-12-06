@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182cd195a28310e479cddf7ff82822f8, type: 3}
   m_Name: LootLockerConfig
   m_EditorClassIdentifier: 
-  apiKey: 
-  token: 
-  adminToken: 
+  apiKey: dev_f4fbb1cb3560487785fd1e2f6ea329e2
+  token: 2efcf776223c8b313eb03388958090caa288f8b0
+  adminToken: 053daddb27d80379d6dc49def31375f85a15e19f
   refreshToken: 
-  domainKey: 
+  domainKey: iz5r6xfk
   gameID: 0
   game_version: 1.0.0.0
-  sdk_version: 
-  deviceID: defaultPlayerId
-  playerULID: 
+  sdk_version: 3.4.0
+  deviceID: efa4005d-36da-4076-9e86-5da73d12e209
+  playerULID: 01JEDMWWB35M7W5QN69NC9NAE1
   url: https://api.lootlocker.com/v1
-  adminUrl: https://api.lootlocker.com/admin
-  playerUrl: https://api.lootlocker.com/player
-  userUrl: https://api.lootlocker.com/game
-  baseUrl: https://api.lootlocker.com
+  adminUrl: https://iz5r6xfk.api.lootlocker.com/admin
+  playerUrl: https://iz5r6xfk.api.lootlocker.com/player
+  userUrl: https://iz5r6xfk.api.lootlocker.com/game
+  baseUrl: https://iz5r6xfk.api.lootlocker.com
   clientSideRequestTimeOut: 180
-  currentDebugLevel: 0
+  currentDebugLevel: 3
   allowTokenRefresh: 1

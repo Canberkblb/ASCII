@@ -15,6 +15,7 @@ TagManager:
   - npctable
   - yemek
   - Trash
+  - Spawn
   layers:
   - Default
   - TransparentFX

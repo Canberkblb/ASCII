@@ -94,6 +94,12 @@ public class NPCManager : MonoBehaviour
         for (int i = 0; i < npcs.Count && i < linePoints.Length; i++)
         {
             GameObject npc = npcs[i];
+            if (npc == null || linePoints[i] == null)
+            {
+                Debug.LogWarning("NPC veya linePoint null: " + i);
+                continue;
+            }
+
             NavMeshAgent agent = npc.GetComponent<NavMeshAgent>();
             NPC npcScript = npc.GetComponent<NPC>();
             
@@ -132,6 +138,17 @@ public class NPCManager : MonoBehaviour
     {
         totalSpawnedNPCs = 0;
         CancelInvoke("SpawnNPC");
+        InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate);
+    }
+
+    public void ResetNPCs()
+    {
+        totalSpawnedNPCs = 0;
+        foreach (GameObject npc in npcs)
+        {
+            Destroy(npc);
+        }
+        npcs.Clear();
         InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate);
     }
 }

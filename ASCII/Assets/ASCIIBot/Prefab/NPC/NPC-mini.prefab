@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPercent: 0
-  speed: 6
+  speed: 4
   minValue: 0
   maxValue: 100
   valueLimit: 100
@@ -802,3 +802,4 @@ MonoBehaviour:
   hate: {fileID: 397703706148483003}
   isMyTime: 0
   npcWaitTime: 5
+  rotationSpeed: 5
