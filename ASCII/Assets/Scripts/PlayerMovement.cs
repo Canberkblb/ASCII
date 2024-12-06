@@ -8,12 +8,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float inputThreshold = 1f;
 
     private CharacterController characterController;
+    private Animator animator;
     private Vector3 moveDirection;
     private Vector3 velocity;
+    
+    private bool isRunning = false;
+    private bool isIdle = true;
+    private bool isBoringIdle = false;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -25,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(vertical) < inputThreshold) vertical = 0f;
 
         moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        
+        UpdateAnimationState();
         
         if (moveDirection != Vector3.zero)
         {
@@ -46,5 +54,24 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = moveDirection * moveSpeed * Time.fixedDeltaTime;
         characterController.Move(move + velocity * Time.fixedDeltaTime);
+    }
+
+    private void UpdateAnimationState()
+    {
+        if (moveDirection.magnitude > 0.1f)
+        {
+            isRunning = true;
+            isIdle = false;
+            isBoringIdle = false;
+        }
+        else
+        {
+            isRunning = false;
+            isIdle = true;
+        }
+        
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isBoringIdle", isBoringIdle);
     }
 }

@@ -82,6 +82,7 @@ public class NPC : MonoBehaviour
                             smile.SetActive(true);
                             hate.SetActive(false);
                             GameObject yemek = child.gameObject;
+                            ScoreManager.Instance.IncreaseScore();
                             StartCoroutine(WaitAndSendToEndPoint(npcWaitTime, yemek));
                         }
                     }
@@ -104,6 +105,7 @@ public class NPC : MonoBehaviour
             SendToEndPoint();
             smile.SetActive(false);
             hate.SetActive(true);
+            ScoreManager.Instance.DecreaseScore();
         }
         else if (value % 2.5f < 0.1f)
         {

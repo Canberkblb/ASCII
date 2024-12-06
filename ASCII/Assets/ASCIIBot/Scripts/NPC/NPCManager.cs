@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class NPCManager : MonoBehaviour
 {
-    public static NPCManager Instance { get; private set; } // Singleton instance
+    public static NPCManager Instance { get; private set; }
 
     [Header("NPC Ayarları")]
     public GameObject npcPrefab;
@@ -22,23 +22,23 @@ public class NPCManager : MonoBehaviour
     private Transform[] linePoints;
     private List<GameObject> npcs = new List<GameObject>();
     private Material sharedMaterial;
+    private int totalSpawnedNPCs = 0;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Oyun sahnesi değişse bile bu nesneyi yok etme
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Zaten bir instance varsa, bu nesneyi yok et
+            Destroy(gameObject);
         }
     }
 
     void Start()
     {
-        // NPC'lerin paylaşacağı materyali al
         Renderer npcRenderer = npcPrefab.GetComponentInChildren<Renderer>();
         if (npcRenderer != null)
         {
@@ -46,7 +46,7 @@ public class NPCManager : MonoBehaviour
         }
 
         CreateLinePoints();
-        InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate); // Güncellendi: sabit değer yerine spawnRate kullanılıyor
+        InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate);
     }
 
     void CreateLinePoints()
@@ -63,21 +63,20 @@ public class NPCManager : MonoBehaviour
 
     void SpawnNPC()
     {
-        if (npcs.Count >= lineLength)
+        if (!LevelManager.Instance.CanSpawnNPC())
         {
             return;
         }
 
+        totalSpawnedNPCs++;
         GameObject npc = Instantiate(npcPrefab, spawnPoint.position, Quaternion.identity);
         
-        // Random renk oluştur
         Color randomColor = new Color(
             Random.Range(0f, 1f),
             Random.Range(0f, 1f),
             Random.Range(0f, 1f)
         );
 
-        // NPC'nin renderer komponentini bul ve materyali uygula
         Renderer npcRenderer = npc.GetComponentInChildren<Renderer>();
         if (npcRenderer != null && sharedMaterial != null)
         {
@@ -102,7 +101,7 @@ public class NPCManager : MonoBehaviour
             {
                 agent.SetDestination(linePoints[i].position);
                 
-                if (i == 0 && npcScript != null) // En öndeki NPC için
+                if (i == 0 && npcScript != null)
                 {
                     npcScript.isMyTime = true;
                 }
@@ -122,29 +121,17 @@ public class NPCManager : MonoBehaviour
             {
                 agent.SetDestination(endPoint.position);
                 Destroy(npc, 5f);
+                LevelManager.Instance.OnNPCCompleted();
             }
 
             ArrangeNPCsInLine();
         }
     }
-
-    void Update()
+    
+    public void ResetForNewLevel()
     {
-        // NPC animasyon kontrolü artık NPC sınıfında
-    }
-
-    void OnDrawGizmos()
-    {
-        if (linePoints != null)
-        {
-            Gizmos.color = Color.red; // Gizmo rengi
-            foreach (Transform point in linePoints)
-            {
-                if (point != null)
-                {
-                    Gizmos.DrawSphere(point.position, 0.2f); // Küçük bir küre çiz
-                }
-            }
-        }
+        totalSpawnedNPCs = 0;
+        CancelInvoke("SpawnNPC");
+        InvokeRepeating("SpawnNPC", npcStartDelay, spawnRate);
     }
 }

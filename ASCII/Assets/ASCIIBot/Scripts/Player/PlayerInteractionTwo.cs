@@ -115,6 +115,9 @@ public class PlayerInteractionTwo : MonoBehaviour
                 case "npctable":
                     InteractWithNPCTable(hitObject);
                     break;
+                case "Trash":
+                    InteractWithTrash(hitObject);
+                    break;
             }
         }
     }
@@ -597,6 +600,16 @@ public class PlayerInteractionTwo : MonoBehaviour
             Destroy(activeProgressCanvas);
             activeProgressCanvas = null;
             activeProgressBar = null;
+        }
+    }
+
+    private void InteractWithTrash(GameObject trash)
+    {
+        if (isHolding && holdPosition.childCount > 0)
+        {
+            Transform holdPos = holdPosition.GetChild(0);
+            Destroy(holdPos.gameObject);
+            isHolding = false;
         }
     }
 

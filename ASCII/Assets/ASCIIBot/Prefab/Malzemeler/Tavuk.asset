@@ -15,7 +15,8 @@ MonoBehaviour:
   ingredientName: Tavuk
   ingredientCratePrefab: {fileID: 7630656558974749385, guid: 36cda719d1cfb944595410182215cf19, type: 3}
   ingredientPrefab: {fileID: 4963492169709664095, guid: fcd9fb0f5791765459a025711256e749, type: 3}
-  requiresCutting: 1
+  slicedPrefab: {fileID: 0}
+  requiresCutting: 0
   requiresWashing: 0
   requiresCooking: 1
   requiresBaking: 0

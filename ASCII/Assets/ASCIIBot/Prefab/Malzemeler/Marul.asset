@@ -21,4 +21,6 @@ MonoBehaviour:
   requiresCooking: 1
   requiresBaking: 0
   requiredActionsOrder:
+  - wash
+  - cut
   - cook
