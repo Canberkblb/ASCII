@@ -2512,6 +2512,7 @@ MonoBehaviour:
   moveSpeed: 5
   gravity: 9.81
   inputThreshold: 1
+  canMove: 1
 --- !u!143 &361252723
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2557,6 +2558,7 @@ MonoBehaviour:
   progressBarPrefab: {fileID: 213657956}
   canvasPrefab: {fileID: 140235145}
   progressBarScale: 0.01
+  playerMovement: {fileID: 0}
   CookedRecipes:
   - {fileID: 7733001563665413970, guid: 244380396d1927b4c8006fae2d04f9bb, type: 3}
   - {fileID: 3612625982061695720, guid: b0900d03737a87640abfce5cc11f41f2, type: 3}
@@ -12023,6 +12025,7 @@ MonoBehaviour:
   progressBarPrefab: {fileID: 213657956}
   canvasPrefab: {fileID: 140235145}
   progressBarScale: 0.01
+  playerMovement: {fileID: 6845508801858281089}
   CookedRecipes:
   - {fileID: 7733001563665413970, guid: 244380396d1927b4c8006fae2d04f9bb, type: 3}
   - {fileID: 3612625982061695720, guid: b0900d03737a87640abfce5cc11f41f2, type: 3}
@@ -12051,6 +12054,7 @@ MonoBehaviour:
   moveSpeed: 5
   gravity: 9.81
   inputThreshold: 1
+  canMove: 1
 --- !u!136 &6845508801858281090
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Vector3 velocity;
     
+    public bool canMove = true;
     private bool isRunning = false;
     private bool isIdle = true;
     private bool isBoringIdle = false;
@@ -24,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove)
+        {
+            return;}
+       
         float horizontal = joystick.Horizontal;
         float vertical = joystick.Vertical;
         
@@ -73,5 +78,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isBoringIdle", isBoringIdle);
+    }
+    
+    public void StopMovement()
+    {
+        canMove = false;
+        moveDirection = Vector3.zero;
+        velocity = Vector3.zero;
+        characterController.Move(Vector3.zero);
+        animator.SetBool("isRunning", false);
+        animator.SetBool("isIdle", true);
+        animator.SetBool("isBoringIdle", false);
     }
 }

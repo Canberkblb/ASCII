@@ -22,7 +22,8 @@ public class PlayerInteractionTwo : MonoBehaviour
     private ProgressBar activeProgressBar;
     private GameObject activeProgressCanvas;
     private Camera mainCamera;
-
+    public PlayerMovement playerMovement;
+    
     [Header("FoodRelated")]
     [SerializeField]
     private List<GameObject> CookedRecipes;
@@ -282,6 +283,10 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private void InteractWithStove(GameObject stoveObject)
     {
+        if (isCooking)
+        {
+            return;}
+        
         Transform stoveHoldPosition = stoveObject.transform.Find("HoldPosition");
         Transform spawnPosition = stoveObject.transform.Find("SpawnPosition");
         currentStove = stoveObject;
@@ -393,6 +398,7 @@ public class PlayerInteractionTwo : MonoBehaviour
             var progressBar = activeProgressBar.GetComponent<ProgressBar>();
             progressBar.ProcessCompleted += OnCookingComplete;
             progressBar.StartProcess();
+            playerMovement.StopMovement();
         }
     }
 
@@ -424,6 +430,7 @@ public class PlayerInteractionTwo : MonoBehaviour
             {
                 Destroy(potTransform.gameObject);
             }
+            playerMovement.canMove = true;
         }
 
         if (activeProgressCanvas != null)
@@ -448,6 +455,10 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private void InteractWithWash(GameObject washObject)
     {
+        if (isWashing)
+        {
+            return;}
+        
         Transform washHoldPosition = washObject.transform.Find("HoldPosition");
 
         if (isHolding && holdPosition.childCount > 0)
@@ -509,6 +520,7 @@ public class PlayerInteractionTwo : MonoBehaviour
             var progressBar = activeProgressBar.GetComponent<ProgressBar>();
             progressBar.ProcessCompleted += OnWashingComplete;
             progressBar.StartProcess();
+            playerMovement.StopMovement();
         }
     }
 
@@ -529,6 +541,7 @@ public class PlayerInteractionTwo : MonoBehaviour
                     ingredientRef.CompleteAction("wash");
                 }
             }
+            playerMovement.canMove = true;
         }
 
         if (activeProgressCanvas != null)
@@ -541,6 +554,10 @@ public class PlayerInteractionTwo : MonoBehaviour
 
     private void InteractWithCuttingBoard(GameObject cuttingBoardObject)
     {
+        if (isCutting)
+        {
+            return;}
+        
         Transform cutHoldPosition = cuttingBoardObject.transform.Find("HoldPosition");
 
         if (isHolding && holdPosition.childCount > 0)
@@ -601,6 +618,7 @@ public class PlayerInteractionTwo : MonoBehaviour
             var progressBar = activeProgressBar.GetComponent<ProgressBar>();
             progressBar.ProcessCompleted += OnCuttingComplete;
             progressBar.StartProcess();
+            playerMovement.StopMovement();
         }
     }
 
@@ -643,6 +661,7 @@ public class PlayerInteractionTwo : MonoBehaviour
 
                         Destroy(originalIngredientRef.gameObject);
                     }
+                    playerMovement.canMove = true;
                 }
             }
         }
